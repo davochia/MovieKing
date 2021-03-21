@@ -8,7 +8,6 @@
     <item
         android:id="@+id/favoriteButton"
         android:enabled="true"
-        android:onClick="openFavorites"
         android:icon="@drawable/movie_logo"
         android:title="Favorites Movies"/>
 

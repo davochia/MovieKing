@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
                             "Redirecting...",Toast.LENGTH_SHORT).show();
 
                     // redirecting to main activity with bottom nav
-                    Intent intent= new Intent(LoginActivity.this, FavoriteActivity.class);
+                    Intent intent= new Intent(LoginActivity.this, PopularMoviesActivity.class);
                     startActivity(intent);
                 }
                 else{

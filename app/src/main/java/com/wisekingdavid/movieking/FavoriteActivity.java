@@ -36,6 +36,33 @@ public class FavoriteActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_favorite);
 
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.favoriteButton);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+            switch (item.getItemId()){
+                case R.id.favoriteButton:
+//                        startActivity(new Intent(getApplicationContext(), FavoriteActivity.class));
+//                        overridePendingTransition(0,0);
+                    return true;
+
+                case R.id.popularButton:
+                    startActivity(new Intent(getApplicationContext(), PopularMoviesActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+
+                case R.id.searchButton:
+                    startActivity(new Intent(getApplicationContext(), SearchActivity.class));
+                    overridePendingTransition(0,0);
+                    return true;
+            }
+            return false;
+        });
+
+
+
+
+
         movies = new ArrayList<>();
         movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
         movies.add(new Movie("Scarry Movie", "Action", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
@@ -65,21 +92,6 @@ public class FavoriteActivity extends AppCompatActivity {
         RecycleViewMovieAdapter myMovieAdapter = new RecycleViewMovieAdapter(this, favorites);
         myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         myRecycler.setAdapter(myMovieAdapter);
-
-
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setSelectedItemId(R.id.favoriteButton);
-
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()){
-//                    case R.id.popularButton:
-////                        startActivity(new Intent(getApplicationContext()));
-//                }
-//                return false;
-//            }
-//        });
 
     }
 }
