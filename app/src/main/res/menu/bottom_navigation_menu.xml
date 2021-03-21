@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/popularButton"
+        android:enabled="true"
+        android:icon="@drawable/movie_logo"
+        android:title="Popular Movies"/>
+    <item
+        android:id="@+id/favoriteButton"
+        android:enabled="true"
+        android:onClick="openFavorites"
+        android:icon="@drawable/movie_logo"
+        android:title="Favorites Movies"/>
+
+    <item
+        android:id="@+id/searchButton"
+        android:enabled="true"
+        android:icon="@drawable/movie_logo"
+        android:title="Search Button"/>
+</menu>
