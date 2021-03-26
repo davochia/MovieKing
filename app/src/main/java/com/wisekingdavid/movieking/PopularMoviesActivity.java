@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.wisekingdavid.movieking.adapter.PopularMoviesAdapter;
 import com.wisekingdavid.movieking.model.Category;
+import com.wisekingdavid.movieking.model.CategoryItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +30,7 @@ public class PopularMoviesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_popular_movies);
 
-
+        // Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.popularButton);
 
@@ -57,13 +58,55 @@ public class PopularMoviesActivity extends AppCompatActivity {
         });
 
 
+        List<CategoryItem> actionList = new ArrayList<>();
+        actionList.add(new CategoryItem(1, R.drawable.action));
+        actionList.add(new CategoryItem(1, R.drawable.blade));
+        actionList.add(new CategoryItem(1, R.drawable.mib));
+        actionList.add(new CategoryItem(1, R.drawable.rocky));
+        actionList.add(new CategoryItem(1, R.drawable.tombraider));
+        actionList.add(new CategoryItem(1, R.drawable.star_trek));
+        actionList.add(new CategoryItem(1, R.drawable.startwars));
+
+
+        List<CategoryItem> dramaList = new ArrayList<>();
+        dramaList.add(new CategoryItem(1, R.drawable.godfather));
+        dramaList.add(new CategoryItem(1, R.drawable.trechery));
+        dramaList.add(new CategoryItem(1, R.drawable.daddydaycare));
+        dramaList.add(new CategoryItem(1, R.drawable.rocky));
+
+
+        List<CategoryItem> scifiList = new ArrayList<>();
+        scifiList.add(new CategoryItem(1, R.drawable.mib));
+        scifiList.add(new CategoryItem(1, R.drawable.startwars));
+        scifiList.add(new CategoryItem(1, R.drawable.star_trek));
+        scifiList.add(new CategoryItem(1, R.drawable.tombraider));
+
+
+        List<CategoryItem> comedyList = new ArrayList<>();
+        comedyList.add(new CategoryItem(1, R.drawable.mrbean));
+        comedyList.add(new CategoryItem(1, R.drawable.momsnightout));
+        comedyList.add(new CategoryItem(1, R.drawable.daddydaycare));
+
+        List<CategoryItem> horrorList = new ArrayList<>();
+        horrorList.add(new CategoryItem(1, R.drawable.alive));
+        horrorList.add(new CategoryItem(1, R.drawable.blade));
+        horrorList.add(new CategoryItem(1, R.drawable.halloweenmovies));
+        horrorList.add(new CategoryItem(1, R.drawable.hunted));
+        horrorList.add(new CategoryItem(1, R.drawable.it));
+        horrorList.add(new CategoryItem(1, R.drawable.scarymovies));
+        horrorList.add(new CategoryItem(1, R.drawable.halloweenmovies));
+
+
+
+
+
+        // Vertical category
         List<Category> categoryList = new ArrayList<>();
-        categoryList.add(new Category("Top Pre-Orders"));
-        categoryList.add(new Category("Top Movies"));
-        categoryList.add(new Category("New & Noteworthy"));
-        categoryList.add(new Category("Top Free"));
-        categoryList.add(new Category("Action"));
-        categoryList.add(new Category("New To Rent"));
+        categoryList.add(new Category("Comedy", comedyList));
+        categoryList.add(new Category("Drama", dramaList));
+        categoryList.add(new Category("Action", actionList));
+        categoryList.add(new Category("Sci-fi", scifiList));
+        categoryList.add(new Category("Horror", horrorList));
 
         setPopularCategoryRecycler(categoryList);
     }

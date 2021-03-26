@@ -2,14 +2,31 @@ package com.wisekingdavid.movieking;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.wisekingdavid.movieking.Data.MovieData;
+import com.wisekingdavid.movieking.adapter.RecycleViewMovieAdapter;
+import com.wisekingdavid.movieking.model.Movie;
 
-public class SearchActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
+
+public class SearchActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+
+    RecycleViewMovieAdapter myMovieAdapter;
+    SearchView searchView;
+    List<Movie> movies;
+    MovieData movieData = new MovieData();
+    List<Movie> searchMovies;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +59,35 @@ public class SearchActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+
+        movies = movieData.addMovies();
+        RecyclerView myRecycler = findViewById(R.id.searchRecycleView);
+
+//        searchMovies = new ArrayList<>();
+//        for (Movie movie: movies){
+//            if (movie.getTitle().toLowerCase().contains(searchView.getQuery().toString().toLowerCase())){
+//                searchMovies.add(movie);
+//            }
+//        }
+
+        myMovieAdapter = new RecycleViewMovieAdapter(this, movies);
+        myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
+        myRecycler.setAdapter(myMovieAdapter);
+
+        searchView = findViewById(R.id.edxSearch);
+        searchView.setOnQueryTextListener(this);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String text = newText;
+        myMovieAdapter.filter(text);
+        return false;
     }
 }

@@ -7,10 +7,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.wisekingdavid.movieking.R;
 import com.wisekingdavid.movieking.model.Category;
+import com.wisekingdavid.movieking.model.CategoryItem;
 
 import java.util.List;
 
@@ -33,6 +35,7 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
     @Override
     public void onBindViewHolder(@NonNull PopularMoviesViewHolder holder, int position) {
         holder.categoryName.setText(categoryList.get(position).getCategoryName());
+        setCategoryListRecycler(holder.recyclerView, categoryList.get(position).getCategoryItemList());
     }
 
     @Override
@@ -41,14 +44,27 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
     }
 
 
+
+
+
     public class PopularMoviesViewHolder extends RecyclerView.ViewHolder{
 
         TextView categoryName;
+        RecyclerView recyclerView;
 
         public PopularMoviesViewHolder(@NonNull View itemView) {
             super(itemView);
 
             categoryName = itemView.findViewById(R.id.catTitle);
+            recyclerView = itemView.findViewById(R.id.catItemRecycler);
         }
     }
+
+    private void setCategoryListRecycler(RecyclerView recyclerView, List<CategoryItem> categoryItems){
+        CategoryItemRecyclerAdapter categoryItemRecyclerAdapter = new CategoryItemRecyclerAdapter(context, categoryItems);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
+        recyclerView.setAdapter(categoryItemRecyclerAdapter);
+
+    }
+
 }

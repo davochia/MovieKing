@@ -47,9 +47,9 @@ public class MovieActivity extends AppCompatActivity {
         txtTitle.setText(movieTitle);
         txtDescription.setText(description);
         txtCategory.setText(cat);
-        txtReleased.setText(released);
+        txtReleased.setText(new StringBuilder().append("Released: ").append(released).toString());
         posterImage.setImageResource(image);
-        rRating.setText(new StringBuilder().append("Rating: ").append(rating).toString());
+        rRating.setText(new StringBuilder().append("|  Rating: ").append(rating).toString());
         checkBox.setChecked(favorite);
 
 

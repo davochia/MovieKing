@@ -16,16 +16,21 @@ import com.wisekingdavid.movieking.MovieActivity;
 import com.wisekingdavid.movieking.R;
 import com.wisekingdavid.movieking.model.Movie;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class RecycleViewMovieAdapter extends RecyclerView.Adapter<RecycleViewMovieAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<Movie> mData;
+    private ArrayList<Movie> arraylist;
 
     public RecycleViewMovieAdapter(Context mContext, List<Movie> mData) {
         this.mContext = mContext;
         this.mData = mData;
+        this.arraylist = new ArrayList<>();
+        this.arraylist.addAll(mData);
     }
 
     @NonNull
@@ -87,6 +92,32 @@ public class RecycleViewMovieAdapter extends RecyclerView.Adapter<RecycleViewMov
 
             cardView = itemView.findViewById(R.id.favoriteCardView);
         }
+    }
+
+//    public void updateList(List<Movie> list){
+//        mData = list;
+//        notifyDataSetChanged();
+//    }
+//
+//
+//    public Movie getItem(int position) {
+//        return mData.get(position);
+//    }
+
+    // Filter Class
+    public void filter(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        mData.clear();
+        if (charText.length() == 0) {
+            mData.addAll(arraylist);
+        } else {
+            for (Movie m: arraylist) {
+                if (m.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mData.add(m);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 }

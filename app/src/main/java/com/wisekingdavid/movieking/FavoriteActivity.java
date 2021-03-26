@@ -1,18 +1,14 @@
 package com.wisekingdavid.movieking;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.wisekingdavid.movieking.Data.MovieData;
 import com.wisekingdavid.movieking.adapter.RecycleViewMovieAdapter;
 import com.wisekingdavid.movieking.model.Movie;
 
@@ -22,6 +18,7 @@ import java.util.List;
 public class FavoriteActivity extends AppCompatActivity {
 
     List<Movie> movies;
+    MovieData movieData = new MovieData();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,26 +57,7 @@ public class FavoriteActivity extends AppCompatActivity {
         });
 
 
-
-
-
-        movies = new ArrayList<>();
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Action", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, false));
-        movies.add(new Movie("Scarry Movie", "Drama", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, false));
-        movies.add(new Movie("Scarry Movie", "Thriller", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, false));
-        movies.add(new Movie("Scarry Movie", "Sci-Fi", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Kids and Family", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, false));
-        movies.add(new Movie("Scarry Movie", "Romance", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, false));
-        movies.add(new Movie("Scarry Movie", "Romance", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Horror", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, true));
-        movies.add(new Movie("Scarry Movie", "Sci-Fi", R.drawable.scarymovies, "Movie Description", "23/05/2018", 5, false));
-
+        movies = movieData.addMovies();
         RecyclerView myRecycler = findViewById(R.id.recycleViewId);
 
         List<Movie> favorites = new ArrayList<>();
