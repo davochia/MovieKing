@@ -94,17 +94,7 @@ public class RecycleViewMovieAdapter extends RecyclerView.Adapter<RecycleViewMov
         }
     }
 
-//    public void updateList(List<Movie> list){
-//        mData = list;
-//        notifyDataSetChanged();
-//    }
-//
-//
-//    public Movie getItem(int position) {
-//        return mData.get(position);
-//    }
-
-    // Filter Class
+    // Filter function
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
         mData.clear();
@@ -113,6 +103,22 @@ public class RecycleViewMovieAdapter extends RecyclerView.Adapter<RecycleViewMov
         } else {
             for (Movie m: arraylist) {
                 if (m.getTitle().toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mData.add(m);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+
+    public void filterMovieList(String charText) {
+        charText = charText.toLowerCase(Locale.getDefault());
+        mData.clear();
+        if (charText.length() == 0) {
+            mData.addAll(arraylist);
+        } else {
+            for (Movie m: arraylist) {
+                if (m.getCategory().toLowerCase(Locale.getDefault()).contains(charText)) {
                     mData.add(m);
                 }
             }

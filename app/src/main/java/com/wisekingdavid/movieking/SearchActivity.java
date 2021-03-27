@@ -64,13 +64,6 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         movies = movieData.addMovies();
         RecyclerView myRecycler = findViewById(R.id.searchRecycleView);
 
-//        searchMovies = new ArrayList<>();
-//        for (Movie movie: movies){
-//            if (movie.getTitle().toLowerCase().contains(searchView.getQuery().toString().toLowerCase())){
-//                searchMovies.add(movie);
-//            }
-//        }
-
         myMovieAdapter = new RecycleViewMovieAdapter(this, movies);
         myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         myRecycler.setAdapter(myMovieAdapter);
@@ -90,4 +83,5 @@ public class SearchActivity extends AppCompatActivity implements SearchView.OnQu
         myMovieAdapter.filter(text);
         return false;
     }
+
 }
