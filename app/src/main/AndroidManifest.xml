@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieKing">
         <activity android:name=".CategoryActivity"></activity>
-        <activity android:name=".SearchActivity" />
+        <activity android:name=".SearchActivity" android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".BottomNavigationActivity" />
         <activity android:name=".PopularMoviesActivity" />
         <activity android:name=".MovieActivity" />

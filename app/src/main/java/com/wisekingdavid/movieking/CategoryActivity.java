@@ -56,22 +56,22 @@ public class CategoryActivity extends AppCompatActivity {
         });
 
         txtCat = findViewById(R.id.categoryMovies);
-        Intent intent = getIntent();
-//        String cat = intent.getExtras().getString("CatTitle");
-        //txtCat.setText(cat);
+        String catName = getIntent().getStringExtra("CatTitle");
+        txtCat.setText(catName);
 
 
         movies = movieData.addMovies();
         RecyclerView myRecycler = findViewById(R.id.catRecycleView);
 
-//        List<Movie> categoryMovies = new ArrayList<>();
-//        for (Movie movie: movies){
-//            if (movie.getCategory().toLowerCase().equals(txtCat.getText().toString().toLowerCase())){
-//                categoryMovies.add(movie);
-//            }
-//        }
 
-        myMovieAdapter = new RecycleViewMovieAdapter(this, movies);
+        List<Movie> categoryMovies = new ArrayList<>();
+        for (Movie movie: movies){
+            if (movie.getCategory().toLowerCase().equals(catName.toLowerCase())){
+                categoryMovies.add(movie);
+            }
+        }
+
+        myMovieAdapter = new RecycleViewMovieAdapter(this, categoryMovies);
         myRecycler.setLayoutManager(new GridLayoutManager(this, 2));
         myRecycler.setAdapter(myMovieAdapter);
     }

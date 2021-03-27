@@ -24,15 +24,16 @@ import java.util.Locale;
 public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdapter.PopularMoviesViewHolder> {
 
     private Context context;
-    private List<Movie> mData;
     private List<Category> categoryList;
-    //private ArrayList<Movie> arraylist;
+//    private ArrayList<Movie> arraylist;
+//    private List<Movie> mData;
+
 
     public PopularMoviesAdapter(Context context, List<Category> categoryList) {
         this.context = context;
         this.categoryList = categoryList;
-      //  this.arraylist = new ArrayList<>();
-        //this.arraylist.addAll(mData);
+//        this.arraylist = new ArrayList<>();
+//        this.arraylist.addAll(mData);
 
     }
 
@@ -51,7 +52,8 @@ public class PopularMoviesAdapter extends RecyclerView.Adapter<PopularMoviesAdap
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, CategoryActivity.class);
-//                intent.putExtra("CatTitle", mData.get(position).getCategory());
+                intent.putExtra("CatTitle", categoryList.get(position).getCategoryName());
+//                holder.categoryName.setText(categoryList.get(position).getCategoryName());
                 context.startActivity(intent);
             }
         });

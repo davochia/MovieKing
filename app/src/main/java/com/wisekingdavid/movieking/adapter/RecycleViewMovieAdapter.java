@@ -111,19 +111,19 @@ public class RecycleViewMovieAdapter extends RecyclerView.Adapter<RecycleViewMov
     }
 
 
-    public void filterMovieList(String charText) {
-        charText = charText.toLowerCase(Locale.getDefault());
-        mData.clear();
-        if (charText.length() == 0) {
-            mData.addAll(arraylist);
-        } else {
-            for (Movie m: arraylist) {
-                if (m.getCategory().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    mData.add(m);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
+//    public void filterMovieList(String charText) {
+//        charText = charText.toLowerCase(Locale.getDefault());
+//        mData.clear();
+//        if (charText.length() == 0) {
+//            mData.addAll(arraylist);
+//        } else {
+//            for (Movie m: arraylist) {
+//                if (m.getCategory().toLowerCase(Locale.getDefault()).contains(charText)) {
+//                    mData.add(m);
+//                }
+//            }
+//        }
+//        notifyDataSetChanged();
+//    }
 
 }
